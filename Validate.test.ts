@@ -41,8 +41,8 @@ describe('Check price format', ()=> {
     it('it should remove extra floats',()=>{
         expect(priceFormator(1024.2048)).toBe('1024.20 SEK')
     })
-    it('should throw exeption when more than 2 floats',()=>{
-        expect(()=>priceFormator(1024.2048)).toThrow("more than 2 floats")
-    })
+    // it('should throw exeption when more than 2 floats',()=>{
+    //     expect(()=>priceFormator(1024.2048)).toThrow("more than 2 floats")
+    // })
 
 })
