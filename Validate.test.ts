@@ -1,5 +1,6 @@
 import emailValidator from './EmailValidator';
 import zipValidator from './ZipValidator';
+import createHeading from './createHeading'
 describe("email validator", ()=>{
     it("should throw exception when email is missing @", ()=>{
         expect (()=> emailValidator("jonatangmail.com")).toThrow("Must contain @")
@@ -20,5 +21,12 @@ describe("zip validator", ()=>{
 //     expect (()=> zipValidator("12345")).toEqual('ok')
 //     expect(zipValidator('12345')).toHaveReturnedWith('ok')
 // })
+})
+
+describe('Create heading', () => {
+    it('should take return a heading with the given size and content', ()=>{
+        expect(createHeading('jesting testing', 2)).toBe('<h2>jesting testing</h2>')
+    })
+    it('should throw an exception if the provided header size doesnt exist')
 })
 
