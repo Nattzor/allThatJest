@@ -2,6 +2,8 @@ import emailValidator from './EmailValidator';
 import zipValidator from './ZipValidator';
 import createHeading from './createHeading';
 import priceFormator from './priceFormator'
+import {checkLowerCase} from './checkLowerCase'
+import {checkPrimeNumber, formatName} from './functions'
 describe("email validator", ()=>{
     it("should throw exception when email is missing @", ()=>{
         expect (()=> emailValidator("jonatangmail.com")).toThrow("Must contain @")
@@ -44,7 +46,7 @@ describe('Check price format', ()=> {
     it('it should add USD',()=>{
         expect(priceFormator(14, 'USD')).toBe('14.00 USD')
     })
-    
+
     // it('should throw exeption when more than 2 floats',()=>{
     //     expect(()=>priceFormator(1024.2048)).toThrow("more than 2 floats")
     // })
@@ -53,6 +55,30 @@ describe('Check price format', ()=> {
         expect(priceFormator(14, '$%PRICE%')).toBe('$14.00')
         expect(priceFormator(1024.2048, 'USD %PRICE%')).toBe('USD 1024.20')
     })
-   
 
+})
+
+describe('check Lower case', () => {
+    it('it should return true if a string has no uppercase letters',()=>{
+        expect(checkLowerCase('all lower case string')).toBe(true)
+    })
+    it('return false if input contains uppercase letters',()=>{
+        expect(checkLowerCase('string with Some Uppercase characters')).toBe(false)
+    })
+})
+describe('check if prime number', () => {
+    it('it should return true a number is a prime number',()=>{
+        expect(checkPrimeNumber(7)).toBe(true)
+    })
+    it('return false if a number is not a prime number',()=>{
+        expect(checkPrimeNumber(10)).toBe(false)
+    })
+})
+describe('return with genetiv', () => {
+    it('it should return a name in the genetiv form',()=>{
+        expect(formatName('Carola')).toBe('Carolas')
+    })
+    it('It should should not add an S if the name ends on an S',()=>{
+        expect(formatName('Niklas')).toBe('Niklas')
+    })
 })
