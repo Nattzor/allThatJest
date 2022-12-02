@@ -48,11 +48,11 @@ describe('Check price format', ()=> {
     // it('should throw exeption when more than 2 floats',()=>{
     //     expect(()=>priceFormator(1024.2048)).toThrow("more than 2 floats")
     // })
-    it('it should return according to the pattern'),()=>{
+    it('it should return according to the pattern',()=>{
         expect(priceFormator(232.10542,'%PRICE% kr')).toBe('232.11 kr')
         expect(priceFormator(14, '$%PRICE%')).toBe('$14.00')
         expect(priceFormator(1024.2048, 'USD %PRICE%')).toBe('USD 1024.20')
-    }
+    })
    
 
 })

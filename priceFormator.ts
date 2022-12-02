@@ -1,5 +1,18 @@
 const priceFormator = (price:number, currency?:string)=> {
-    return currency?.includes('%PRICE%')? currency?.replace('%PRICE%',price.toFixed(2).toString()):price.toFixed(2) + ' ' +(currency?currency:'SEK')
+    
+    if(currency?.includes('%PRICE%')){
+        console.log(currency.replace('%PRICE%',price.toFixed(2).toString()))
+        return currency.replace('%PRICE%',price.toFixed(2).toString())
+        
+       
+        } else{
+
+           return price.toFixed(2).toString() + ' ' + currency?currency:'SEK'
+
+        }
+
+        
+    
 }
 
 // return currency?.replace('%PRICE%',price.toString())  
