@@ -3,7 +3,7 @@ import zipValidator from './ZipValidator';
 import createHeading from './createHeading';
 import priceFormator from './priceFormator'
 import {checkLowerCase} from './checkLowerCase'
-import {checkPrimeNumber, formatName} from './functions'
+import {checkPrimeNumber, formatName, getUsers} from './functions'
 describe("email validator", ()=>{
     it("should throw exception when email is missing @", ()=>{
         expect (()=> emailValidator("jonatangmail.com")).toThrow("Must contain @")
@@ -81,4 +81,10 @@ describe('return with genetiv', () => {
     it('It should should not add an S if the name ends on an S',()=>{
         expect(formatName('Niklas')).toBe('Niklas')
     })
+})
+
+describe('return list of arr', () => {
+    it('should return arr'), () => {
+        expect(getUsers).toContain("Erik")
+    }
 })
