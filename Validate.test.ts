@@ -84,7 +84,12 @@ describe('return with genetiv', () => {
 })
 
 describe('return list of arr', () => {
-    it('should return arr'), () => {
-        expect(getUsers).toContain("Erik")
-    }
+    test('the arr contains Erik', () => {
+        return getUsers().then(data => {
+          expect(data).toContain('Erik');
+        });
+      });
+    // it('should return arr'), () => {
+    //     expect(getUsers).toContain("Erik")
+    // }
 })
