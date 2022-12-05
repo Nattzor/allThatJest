@@ -81,15 +81,12 @@ describe('return with genetiv', () => {
     it('It should should not add an S if the name ends on an S',()=>{
         expect(formatName('Niklas')).toBe('Niklas')
     })
-})
+});
 
-describe('return list of arr', () => {
-    test('the arr contains Erik', () => {
-        return getUsers().then(data => {
-          expect(data).toContain('Erik');
+    describe('return list of arr', () => {
+        test('the arr contains Erik and group 1', () => {
+            return getUsers().then(data => {
+                expect(data[0]).toEqual({name: 'Erik', group: 1});
         });
-      });
-    // it('should return arr'), () => {
-    //     expect(getUsers).toContain("Erik")
-    // }
+    })
 })
