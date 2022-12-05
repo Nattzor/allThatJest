@@ -9,13 +9,12 @@ export const formatName = (name: string): string => {
    return name.endsWith('s')? name : name+'s'
 }
 
-type Arr = {
+type Users = {
     name: string;
     group: number;
   };
 
-  export async function getUsers(): Promise<Arr[]> {
-    return [
+  const test2: Users[] = [
     {
         "name": "Erik",
         "group": 1
@@ -41,6 +40,9 @@ type Arr = {
         "group": 3
     }
     ];
+
+  export async function getUsers(): Promise<Users[]> {
+    return test2
   }
 
 type Groups = {
@@ -48,20 +50,27 @@ type Groups = {
     groupName: string
 }
 
+const test: Groups[] =
+[
+    {
+        "id": 1,
+        "groupName": "Hajarna"
+    },
+    {
+        "id": 2,
+        "groupName": "Valarna"
+    },
+    {
+        "id": 3,
+        "groupName": "Zebrorna"
+    }
+]
 
 export async function getGroups(): Promise<Groups[]>{
-   return [
-        {
-            "id": 1,
-            "groupName": "Hajarna"
-        },
-        {
-            "id": 2,
-            "groupName": "Valarna"
-        },
-        {
-            "id": 3,
-            "groupName": "Zebrorna"
-        }
-    ]
+   return test
+}
+
+export async function getGroupsWithUsers(test: Groups[], test2: Users[]) {
+    const a3 = test.map(t1 => ({...t1, ...test2.find(t2 => t2.group === t1.id)}))
+    return a3
 }

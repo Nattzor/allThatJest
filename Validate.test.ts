@@ -3,7 +3,7 @@ import zipValidator from './ZipValidator';
 import createHeading from './createHeading';
 import priceFormator from './priceFormator'
 import {checkLowerCase} from './checkLowerCase'
-import {checkPrimeNumber, formatName, getGroups, getUsers} from './functions'
+import {checkPrimeNumber, formatName, getGroups, getUsers, getGroupsWithUsers} from './functions'
 describe("email validator", ()=>{
     it("should throw exception when email is missing @", ()=>{
         expect (()=> emailValidator("jonatangmail.com")).toThrow("Must contain @")
@@ -94,6 +94,18 @@ describe('return with genetiv', () => {
             return getGroups().then(data => {
                 expect(data[0]).toEqual({id: 1, groupName: 'Hajarna'})
             })
+            })
+        })
+        describe('return arr combining getUsers and getGroups', () => {
+            test('the arr contains erik and the groupname Hajarna' ,() => {
+                return getGroupsWithUsers(test, test2).then(data => {
+                    expect(data[0]).toEqual(
+                        {
+                            "id": 1,
+                            "groupName": "Hajarna",
+                            "users": [ "Erik", "Eva" ]
+                        })
+                })
             })
         })
     })
