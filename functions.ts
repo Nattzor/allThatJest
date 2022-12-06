@@ -14,44 +14,44 @@ type Users = {
     group: number;
   };
 
-  const test2: Users[] = [
-    {
-        "name": "Erik",
-        "group": 1
-    },
-    {
-        "name": "Lisa",
-        "group": 2
-    },
-    {
-        "name": "Hampus",
-        "group": 2
-    },
-    {
-        "name": "Linda",
-        "group": 3
-    },
-    {
-        "name": "Eva",
-        "group": 1
-    },
-    {
-        "name": "Anna",
-        "group": 3
-    }
-    ];
-
   export async function getUsers(): Promise<Users[]> {
-    return test2
+   const users = [
+            {
+                "name": "Erik",
+                "group": 1
+            },
+            {
+                "name": "Lisa",
+                "group": 2
+            },
+            {
+                "name": "Hampus",
+                "group": 2
+            },
+            {
+                "name": "Linda",
+                "group": 3
+            },
+            {
+                "name": "Eva",
+                "group": 1
+            },
+            {
+                "name": "Anna",
+                "group": 3
+            }
+            ];
+            return users
   }
 
 type Groups = {
-    id: Number,
+    id: number,
     groupName: string
+    users?: string[]
 }
 
-const test: Groups[] =
-[
+export async function getGroups(): Promise<Groups[]>{
+  const groups = [
     {
         "id": 1,
         "groupName": "Hajarna"
@@ -65,12 +65,25 @@ const test: Groups[] =
         "groupName": "Zebrorna"
     }
 ]
-
-export async function getGroups(): Promise<Groups[]>{
-   return test
+return groups
 }
 
-export async function getGroupsWithUsers(test: Groups[], test2: Users[]) {
-    const a3 = test.map(t1 => ({...t1, ...test2.find(t2 => t2.group === t1.id)}))
-    return a3
+export async function getGroupsWithUsers() {
+    const anvandare = await getUsers()
+        console.log(anvandare)
+        const grupper = await getGroups()
+        console.log(grupper)
+
+        const combined = grupper.forEach(grupp => anvandare.forEach(singleUser => {
+          if (singleUser.group === grupp.id){
+            grupp.users = []
+            grupp.users.push(singleUser.name)
+          }
+        }))
+        console.log(combined)
+        return combined
+
+        // const combined =  anvandare.map(t1 => ({...t1, ...anvandare.find(t2 => grupper.id === t1.group)}))
+        // return combined
 }
+getGroupsWithUsers()

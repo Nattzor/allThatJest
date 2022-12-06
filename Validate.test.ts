@@ -98,7 +98,7 @@ describe('return with genetiv', () => {
         })
         describe('return arr combining getUsers and getGroups', () => {
             test('the arr contains erik and the groupname Hajarna' ,() => {
-                return getGroupsWithUsers(test, test2).then(data => {
+                return getGroupsWithUsers().then(data => {
                     expect(data[0]).toEqual(
                         {
                             "id": 1,
